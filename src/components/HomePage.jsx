@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
+  addToCart,
   productsCB,
   productsStatusCB,
 } from "../state/slice/products/productSlice";
@@ -18,8 +19,8 @@ const HomePage = () => {
     }
   }, [productsStatus]);
 
-  const buttonHandler = () => {
-    console.log("button click");
+  const buttonHandler = (id) => {
+    dispatch(addToCart(id));
   };
 
   return (

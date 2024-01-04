@@ -15,7 +15,7 @@ const ProductCard = ({ product, buttonHandler, buttonName }) => {
         <p className="text-sm pb-[.5em]">Price: {numberToUsd(product.price)}</p>
         <button
           className="bg-black py-[0.7em] px-[1em] text-center text-white w-[100%]"
-          onClick={buttonHandler}
+          onClick={() => buttonHandler(product.id)}
         >
           {buttonName}
         </button>

@@ -16,7 +16,13 @@ const initialState = {
 const productSlice = createSlice({
   name: "product",
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    addToCart: (state, action) => {
+      const id = action.payload;
+      const prod = state.products.find((o) => o.id === id);
+      state.cart.push(prod);
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getAllProducts.pending, (state) => {
@@ -42,5 +48,7 @@ export const productsCB = (state) => state.product.products;
 export const productsStatusCB = (state) => state.product.productsStatus;
 export const getAllProductsStatusCB = (state) =>
   state.product.getAllProductsStatus;
+
+export const { removeFromCart, addToCart } = productSlice.actions;
 
 export const productReducer = productSlice.reducer;
