@@ -19,8 +19,18 @@ const productSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const id = action.payload;
-      const prod = state.products.find((o) => o.id === id);
-      state.cart.push(prod);
+      const exists = state.cart.find((o) => o.id === id);
+      if (!exists) {
+        const prod = state.products.find((o) => o.id === id);
+        state.cart.push(prod);
+      }
+    },
+    removeFromCart: (state, action) => {
+      const id = action.payload;
+      state.cart = state.cart.filter((o) => o.id !== id);
+    },
+    checkOut: (state) => {
+      state.cart = [];
     },
   },
   extraReducers: (builder) => {
@@ -45,10 +55,11 @@ const productSlice = createSlice({
 });
 
 export const productsCB = (state) => state.product.products;
+export const cartCB = (state) => state.product.cart;
 export const productsStatusCB = (state) => state.product.productsStatus;
 export const getAllProductsStatusCB = (state) =>
   state.product.getAllProductsStatus;
 
-export const { removeFromCart, addToCart } = productSlice.actions;
+export const { removeFromCart, addToCart, checkOut } = productSlice.actions;
 
 export const productReducer = productSlice.reducer;

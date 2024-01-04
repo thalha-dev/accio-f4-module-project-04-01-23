@@ -25,7 +25,7 @@ const HomePage = () => {
 
   return (
     <div>
-      <h1 className="text-center text-4xl font-extrabold">Home</h1>
+      <h1 className="text-center text-4xl font-extrabold">All Items</h1>
       <ProductCards
         buttonHandler={buttonHandler}
         buttonName="Add to Cart"
