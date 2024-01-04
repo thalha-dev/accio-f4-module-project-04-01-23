@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import api from "../../../axiosBase/api";
 
-export default getAllProducts = createAsyncThunk(
+export const getAllProducts = createAsyncThunk(
   "product/getAllProducts",
   async () => {
     try {
